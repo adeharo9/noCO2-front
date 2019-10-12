@@ -1,14 +1,46 @@
 import {drawRoute} from "./routeViewer.js";
 
 $(document).ready(function() {
+    
+    $('#dropdown').on('change',function () {
+        console.log($('#dropdown :selected').val());
+        if($('#dropdown :selected').val() === "transit"){
+            $('#waypoint').hide();
+            $('#waypoints').children('input').remove();
+        }else{
+            $('#waypoint').show();
+        }
+    });
+    
     $('#calculate').on('click',function(e){
         e.preventDefault();
         let origin = $('#origin').val();
         let destination = $('#destination').val();
         let typeVehicle = $('#dropdown :selected').val();
-        alert("Origen: " + origin + " Destination: " + destination);
-        let parameters = { origin: origin, destination: destination, mode: typeVehicle, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+        // Waypoints
+        let waypoints = "";
+        let counter = 0;
+        $('#waypoints').children('input').each(function () {
+            let place = $( this ).val();
+            if(counter==0){
+                waypoints += place;
+            } else {
+                waypoints += "|" + place;
+            }
+            counter++;
+        });
+        // ******
+        if(origin.length == 0 || destination.length == 0){
+            alert("Some field/s is/are empty.");
+        }else{
+            let parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             $.get( "http://104.248.40.235:8080/emissions/", parameters, drawRoute);
+        }
+    });
+
+    $('#waypoint').on('click',function(e){
+        e.preventDefault();
+        $('#waypoints').append("<input style='margin-top: 10px;margin-bottom: 10px' type='text' class='form-control' placeholder='Enter waypoint'>");
     });
 
     $('#contact').on('click',function(e){
