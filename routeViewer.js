@@ -18,7 +18,6 @@ let texInfoEmissions;
 
 const drawRoute = (root) => {
     globalRoot = root;
-    alert(JSON.stringify(root));
     $('#form_calc').hide();
     const $map = $('#map').show();
 
