@@ -18,7 +18,7 @@ let texInfoEmissions;
 const drawRoute = (root) => {
     globalRoot = root;
     $('#form_calc').hide();
-    const $map = $('#map').show();
+    const $map = $('#map-container').show();
 
     texInfoEmissions = new google.maps.InfoWindow();
 

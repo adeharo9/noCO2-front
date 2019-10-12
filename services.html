@@ -21,6 +21,9 @@
             margin: 0;
             padding: 0;
         }
+        .statistics-box {
+            white-space: nowrap;
+        }
     </style>
 
     <title>Services</title>
@@ -66,7 +69,11 @@
 
 <!-- Page Content -->
 <div id="containerID" class="container">
-    <div id="map" style="display: none;"></div>
+    <div id="map-container" class="row" style="height: 100%; display: none;">
+        <div id="map" class="col-md-10"></div>
+        <div class="col-md-2" id="statistics-container">
+        </div>
+    </div>
     <div id="form_calc" class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8" >

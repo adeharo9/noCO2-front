@@ -1,4 +1,5 @@
 import {drawRoute} from "./routeViewer.js";
+import { statistics } from "./statistics.js";
 
 $(document).ready(function() {
     
@@ -67,7 +68,11 @@ $(document).ready(function() {
             }else{
                 parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             }
-            $.get( "http://104.248.40.235:8080/emissions/", parameters, drawRoute);
+            $.get( "http://104.248.40.235:8080/emissions/", parameters, (json) =>
+            {
+                statistics(json);
+                drawRoute(json);
+            });
         }
     });
 
