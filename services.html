@@ -8,6 +8,20 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <style>
+        #map {
+            height: 100%;
+        }
+        #containerID {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
     <title>Services</title>
 
     <!-- Bootstrap core CSS -->
@@ -50,14 +64,12 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
-
-    <div class="row">
-
+<div id="containerID" class="container">
+    <div id="map" style="display: none;"></div>
+    <div id="form_calc" class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8" >
             <div class="container my-4" id="container">
-                <div id="form_calc">
                 <h2 class="my-4">Calculate the optimal CO2 production route</h2>
                 <form id="calc_send">
                     <div class="form-group">
@@ -69,7 +81,7 @@
                         <label for="destination">Destination:</label>
                         <input type="text" class="form-control" id="destination" placeholder="Enter your destination" name="destination">
                     </div>
-                    <select class="form-group browser-default custom-select" id="dropdown">
+                    <label for="dropdown"></label><select class="form-group browser-default custom-select" id="dropdown">
                         <option selected>Select your transport</option>
                         <option value="driving">Driving</option>
                         <option value="transit">Transit</option>
@@ -80,9 +92,7 @@
                     </div>
                     <button type="submit" style="color: white;background-color: #1b1e21" class="btn btn-default" id="calculate">Send</button>
                 </form>
-                </div>
             </div>
-
         </div>
 
         <!-- Sidebar Widgets Column -->
@@ -135,10 +145,10 @@
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM&callback=initMap"
-        async defer></script-->
 <script type="module" src="routeViewer.js"></script>
 <script type="module" src="send.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM&callback=initMap"
+        async defer></script>
 
 </body>
 
