@@ -126,16 +126,12 @@
                         <label for="alternatives">Alternatives</label>
                     </div>
 
-                    <div id="time_radio" class="form-group">
-                        <div class="radio">
-                            <label><input value="nothing" type="radio" name="time_radio" checked id="nothing">Nothing</label>
-                        </div>
-                        <div class="radio">
-                            <label><input value="departure" type="radio" name="time_radio" class="timeArrDep">Departure</label>
-                        </div>
-                        <div class="radio">
-                            <label><input value="arrival" type="radio" name="time_radio" class="timeArrDep">Arrival</label>
-                        </div>
+                    <div class="form-group">
+                        <select class="form-group browser-default custom-select" id="time_select">
+                            <option selected value="nothing">Nothing</option>
+                            <option value="departure">Depart at</option>
+                            <option value="arrival">Arrive at</option>
+                        </select>
                     </div>
 
                     <div id="desired_time" class="form-group" style="display: none;">

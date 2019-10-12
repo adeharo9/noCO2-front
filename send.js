@@ -4,7 +4,6 @@ import { statistics } from "./statistics.js";
 $(document).ready(function() {
     
     $('#dropdown').on('change',function () {
-        console.log($('#dropdown :selected').val());
         if($('#dropdown :selected').val() === "transit"){
             $('#waypoint').hide();
             $('#waypoints').children('input').remove();
@@ -13,12 +12,18 @@ $(document).ready(function() {
             $('#waypoint').show();
         }
     });
-    $('#nothing').click(function () {
-        $('#desired_time').hide()
+    $('#time_select').on('change', function () {
+        if($('#time_select :selected').val() === "nothing")
+        {
+            $('#desired_time').hide();
+        }
     });
 
-    $('.timeArrDep').click(function () {
-        $('#desired_time').show()
+    $('#time_select').on('change', function () {
+        if($('#time_select :selected').val() !== "nothing")
+        {
+            $('#desired_time').show();
+        }
     });
 
     $('#calculate').on('click',function(e){
@@ -51,10 +56,10 @@ $(document).ready(function() {
         // TIME
         let nothing = false;
         let departure = true;
-        if($('input:radio[name=time_radio]:checked').val() == "nothing"){
+        if($('#time_select :selected').val() == "nothing"){
             nothing = true;
-        }else if($('input:radio[name=time_radio]:checked').val() == "arrival"){
-            departure = false
+        }else if($('#time_select :selected').val() == "arrival"){
+            departure = false;
         }
         let fechaMili = new Date($('#time_local').val()).getTime();
         // *****
