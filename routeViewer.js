@@ -2,15 +2,19 @@
 var map;
 
 window.initMap = function initMap() {
-    /*map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    });
-
-    const infoWin = new google.maps.InfoWindow({content: "Hi", position: {lat: -34.397, lng: 150.644}});
-    infoWin.open(map);
-    const marker = new google.maps.Marker({position: {lat: -34.397, lng: 150.644}, map: map})*/
 };
+
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var labelIndex = 0;
+function addMarker(location) {
+    // Add the marker at the clicked location, and add the next-available label
+    // from the array of alphabetical characters.
+    new google.maps.Marker({
+        position: location,
+        label: labels[labelIndex++ % labels.length],
+        map: map
+    });
+}
 
 const drawRoute = (root) => {
     alert(JSON.stringify(root));
@@ -39,6 +43,8 @@ const drawRoute = (root) => {
         }
     }
 
+    addMarker(route.legs[0].start_location);
+
     for (const leg of route.legs) {
         for (const step of leg.steps) {
             let points = polyline.decode(step.polyline.points);
@@ -51,13 +57,13 @@ const drawRoute = (root) => {
 
             let redLevel;
             let greenLevel;
-            if (rateEmissions <= 128) {
+            if (rateEmissions < 128) {
                 redLevel = 2*rateEmissions;
                 greenLevel = 255;
             }
             else {
                 redLevel = 255;
-                greenLevel = (256 - rateEmissions)*2;
+                greenLevel = (255 - rateEmissions)*2;
             }
 
             console.log(rateEmissions);
@@ -75,6 +81,8 @@ const drawRoute = (root) => {
 
             flightPath.setMap(map);
         }
+
+        addMarker(leg.end_location);
     }
 };
 
