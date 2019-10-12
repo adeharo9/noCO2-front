@@ -36,7 +36,7 @@ $(document).ready(function() {
         let waypoints = "";
         let counter = 0;
 
-        $('#waypoints').children('input').each(function () {
+        $('#waypoints').find('input').each(function () {
             let place = $( this ).val();
             if(counter==0){
                 waypoints += place;
@@ -85,8 +85,8 @@ $(document).ready(function() {
     $('#waypoint').on('click',function(e){
         e.preventDefault();
 
-        const $input = $('<input style=\'margin-top: 10px;\' type=\'text\' class=\'form-control col-md-8\' placeholder=\'Enter waypoint\'>');
-        const $button = $('<div class="col-md-3"><button style=\"margin-top: 10px;color: white;background-color: #1b1e21\" class=\"btn btn-default\" name=\"remove_waypoint\">Remove waypoint</button></div>');
+        const $input = $('<div class="col-md-10"><input style=\'margin-top: 10px;\' type=\'text\' class=\'form-control\' placeholder=\'Enter waypoint\'></div>');
+        const $button = $('<div class="col-md-2"><button style=\"margin-top: 10px;color: white;background-color: #1b1e21\" class=\"btn btn-default\" name=\"remove_waypoint\">Remove waypoint</button></div>');
         const $div = $('<div class=\'row\'>');
 
         $div.append($input);
