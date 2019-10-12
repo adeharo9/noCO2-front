@@ -84,17 +84,19 @@ $(document).ready(function() {
 
     $('#waypoint').on('click',function(e){
         e.preventDefault();
-        $('#waypoints').append("<input style='margin-top: 10px;margin-bottom: 10px' type='text' class='form-control' placeholder='Enter waypoint'>");
-        if($('#waypoints').children().length > 0 && !$('#remove_waypoint').length){
-            $('#waypoint').after("<button style=\"color: white;margin-left:15px;margin-bottom: 15px;background-color: #1b1e21\" class=\"btn btn-default\" id=\"remove_waypoint\">Remove waypoint</button>")
-            $('#remove_waypoint').on('click', function (e) {
-                e.preventDefault();
-                $('#waypoints').children().last().remove();
-                if($('#waypoints').children().length == 0){
-                    $('#remove_waypoint').remove();
-                }
-            });
-        }
+
+        const $input = $('<input style=\'margin-top: 10px;\' type=\'text\' class=\'form-control col-md-8\' placeholder=\'Enter waypoint\'>');
+        const $button = $('<div class="col-md-3"><button style=\"margin-top: 10px;color: white;background-color: #1b1e21\" class=\"btn btn-default\" name=\"remove_waypoint\">Remove waypoint</button></div>');
+        const $div = $('<div class=\'row\'>');
+
+        $div.append($input);
+        $div.append($button);
+
+        $('#waypoints').append($div);
+        $button.on('click', function (e) {
+            e.preventDefault();
+            $(this).parent().remove();
+        });
     });
 
 
