@@ -93,17 +93,22 @@
                         <label for="destination">Destination:</label>
                         <input type="text" class="form-control" id="destination" placeholder="Enter your destination" name="destination">
                     </div>
-                    <select class="col-md-5 form-group browser-default custom-select" id="dropdown">
-                        <option selected value="driving">Driving</option>
-                        <option value="transit">Transit</option>
-                    </select>
-                    <select class=" col-md-5 form-group browser-default custom-select" id="dropdown_emission">
-                        <option value="low">Low</option>
-                        <option selected value="med">Med</option>
-                        <option value="high">High</option>
-                        <option value="hybrid">Hybrid</option>
-                        <option value="electric">Electric</option>
-                    </select>
+
+                        <select title="Select transport" class="col-md-5 form-group browser-default custom-select" id="dropdown">
+                            <option selected value="driving">Driving</option>
+                            <option value="transit">Transit</option>
+                        </select>
+
+
+                        <select title="Select type of vehicle" class="col-md-5 form-group browser-default custom-select" id="dropdown_emission">
+                            <option value="low">Low</option>
+                            <option selected value="med">Med</option>
+                            <option value="high">High</option>
+                            <option value="hybrid">Hybrid</option>
+                            <option value="electric">Electric</option>
+                        </select>
+
+
 
                     <div class="form-group" id="waypoints"></div>
                     <button style="margin-bottom: 15px;color: white;background-color: #1b1e21" class="btn btn-default" id="waypoint">Add waypoint</button>
