@@ -7,6 +7,7 @@ $(document).ready(function() {
         if($('#dropdown :selected').val() === "transit"){
             $('#waypoint').hide();
             $('#waypoints').children('input').remove();
+            $('#remove_waypoint').remove();
         }else{
             $('#waypoint').show();
         }
@@ -17,9 +18,10 @@ $(document).ready(function() {
         let origin = $('#origin').val();
         let destination = $('#destination').val();
         let typeVehicle = $('#dropdown :selected').val();
-        // Waypoints
+        // WAYPOINTS
         let waypoints = "";
         let counter = 0;
+
         $('#waypoints').children('input').each(function () {
             let place = $( this ).val();
             if(counter==0){
@@ -29,11 +31,32 @@ $(document).ready(function() {
             }
             counter++;
         });
+
+        // ALTERNATIVES
+        let alternatives = false;
+        if( $('#alternatives').prop('checked') ) {
+            alternatives = true;
+        }
         // ******
+
+        // TIME
+        let departure = true;
+        if($('input:radio[name=time_radio]:checked').val() == "arrival"){
+            departure = false
+        }
+        let fechaMili = new Date($('#time_local').val()).getTime();
+        console.log(fechaMili/1000);
+        // *****
         if(origin.length == 0 || destination.length == 0){
             alert("Some field/s is/are empty.");
         }else{
-            let parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+            let parameters;
+            if(departure){
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, departure_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+            }else{
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, arrival_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+            }
+            console.log(parameters)
             $.get( "http://104.248.40.235:8080/emissions/", parameters, drawRoute);
         }
     });

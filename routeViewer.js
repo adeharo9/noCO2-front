@@ -13,7 +13,7 @@ window.initMap = function initMap() {
 };
 
 const drawRoute = (root) => {
-    alert(JSON.stringify(root));
+    console.log(JSON.stringify(root));
     $('#form_calc').hide();
     $('#map').show();
 
