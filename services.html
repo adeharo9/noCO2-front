@@ -80,7 +80,7 @@
     </div>
     <div id="form_calc" class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-8" >
+        <div class="col-md-12" >
             <div class="container my-4" id="container">
                 <h2 class="my-4">Calculate the optimal CO2 emission route</h2>
                 <form id="calc_send">
@@ -93,21 +93,25 @@
                         <label for="destination">Destination:</label>
                         <input type="text" class="form-control" id="destination" placeholder="Enter your destination" name="destination">
                     </div>
-
-                        <select title="Select transport" class="col-md-5 form-group browser-default custom-select" id="dropdown">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="dropdown">Select transport:</label>
+                        <select class="form-group browser-default custom-select" id="dropdown">
                             <option selected value="driving">Driving</option>
                             <option value="transit">Transit</option>
                         </select>
-
-
-                        <select title="Select type of vehicle" class="col-md-5 form-group browser-default custom-select" id="dropdown_emission">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dropdown_emission">Select type of vehicle:</label>
+                        <select class="form-group browser-default custom-select" id="dropdown_emission">
                             <option value="low">Low</option>
                             <option selected value="med">Med</option>
                             <option value="high">High</option>
                             <option value="hybrid">Hybrid</option>
                             <option value="electric">Electric</option>
                         </select>
-
+                    </div>
+                    </div>
 
 
                     <div class="form-group" id="waypoints"></div>
