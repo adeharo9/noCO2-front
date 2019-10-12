@@ -3,10 +3,11 @@ $(document).ready(function() {
         e.preventDefault();
         let origin = $('#origin').val();
         let destination = $('#destination').val();
-        alert("Origen: " + origin + " Destination: " + destination);
-            let parameters = { origin: origin, destination: destination, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
-            $.get( "http://104.248.40.235:8080/emissions/", parameters, function(data) {
-                alert(JSON.stringify(data));
+        let typeVehicle = $('#dropdown :selected').val();
+        alert("Origen: " + origin + " Destination: " + destination + " Mode: " + typeVehicle);
+            let parameters = { origin: origin, destination: destination, mode: typeVehicle, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+            $.get( "http://104.248.40.235:8080/emissions", parameters, function(data) {
+                alert(jQuery.type(data));
                 $('#form_calc').remove();
                 $('#container').html(JSON.stringify(data));
             });
@@ -21,7 +22,6 @@ $(document).ready(function() {
         alert("Nombre: " + origin + " apellidos: " + surname + " email: " + email + " message: " + message);
         let parameters = { name: name, surname: surname, email: email, message: message };
         $.get( "http://104.248.40.235:8080/contact/", parameters, function(data) {
-            alert(JSON.stringify(data));
             $('#form_calc').remove();
             $('#container').html("<h2>Thank you for contacting with us, we will give you a response as soon as possible!</h2>");
         });
