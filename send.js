@@ -26,6 +26,7 @@ $(document).ready(function() {
         let origin = $('#origin').val();
         let destination = $('#destination').val();
         let typeVehicle = $('#dropdown :selected').val();
+        let emission_index = $('#dropdown_emission :selected').val();
         // WAYPOINTS
         let waypoints = "";
         let counter = 0;
@@ -62,11 +63,11 @@ $(document).ready(function() {
         }else{
             let parameters;
             if(departure && !nothing){
-                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, departure_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, emission_index: emission_index, waypoints: waypoints, alternatives: alternatives, departure_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             }else if(!departure && !nothing){
-                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, arrival_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, emission_index: emission_index, waypoints: waypoints, alternatives: alternatives, arrival_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             }else{
-                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, emission_index: emission_index, waypoints: waypoints, alternatives: alternatives, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             }
             $.get( "http://104.248.40.235:8080/emissions/", parameters, (json) =>
             {
