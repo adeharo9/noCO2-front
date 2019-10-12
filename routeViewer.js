@@ -23,7 +23,7 @@ const drawRoute = (root) => {
     texInfoEmissions = new google.maps.InfoWindow();
 
     map = new google.maps.Map(document.getElementById('map'));
-    const bounds = new google.maps.LatLngBounds(route.bounds.southwest, route.bounds.northeast);
+    const bounds = new google.maps.LatLngBounds(root.routes[0].bounds.southwest, root.routes[0].bounds.northeast);
     map.fitBounds(bounds);
 
     for (const route of root.routes)
