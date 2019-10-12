@@ -12,7 +12,14 @@ $(document).ready(function() {
             $('#waypoint').show();
         }
     });
-    
+    $('#nothing').click(function () {
+        $('#desired_time').hide()
+    });
+
+    $('.timeArrDep').click(function () {
+        $('#desired_time').show()
+    });
+
     $('#calculate').on('click',function(e){
         e.preventDefault();
         let origin = $('#origin').val();

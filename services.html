@@ -87,9 +87,9 @@
                         <option value="transit">Transit</option>
                     </select>
 
-                    <button style="color: white;background-color: #1b1e21" class="btn btn-default" id="waypoint">Add waypoint</button>
-                    <div class="form-group" id="waypoints"></div>
 
+                    <div class="form-group" id="waypoints"></div>
+                    <button style="color: white;background-color: #1b1e21" class="btn btn-default" id="waypoint">Add waypoint</button>
                     <div class="form-group">
                         <input type="checkbox" id="alternatives" value="Alternatives" name="alternatives">
                         <label for="alternatives">Alternatives</label>
@@ -97,17 +97,17 @@
 
                     <div id="time_radio" class="form-group">
                         <div class="radio">
-                            <label><input value="nothing" type="radio" name="time_radio" checked>Nothing</label>
+                            <label><input value="nothing" type="radio" name="time_radio" checked id="nothing">Nothing</label>
                         </div>
                         <div class="radio">
-                            <label><input value="departure" type="radio" name="time_radio">Departure</label>
+                            <label><input value="departure" type="radio" name="time_radio" class="timeArrDep">Departure</label>
                         </div>
                         <div class="radio">
-                            <label><input value="arrival" type="radio" name="time_radio">Arrival</label>
+                            <label><input value="arrival" type="radio" name="time_radio" class="timeArrDep">Arrival</label>
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div id="desired_time" class="form-group" style="display: none;">
                         <label for="destination">Enter the desired time:</label>
                         <input type="datetime-local" class="form-control" id="time_local" name="time_local">
                     </div>
