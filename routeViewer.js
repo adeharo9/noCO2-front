@@ -15,25 +15,23 @@ window.initMap = function initMap() {
 const drawRoute = (root) => {
     alert(JSON.stringify(root));
     $('#form_calc').hide();
-    $('#map').show();
+    const $map = $('#map').show();
 
-    const startPoint = root.routes[0].legs[0].start_location;
-    const endPoint = root.routes[0].legs[0].end_location;
+    const route = root.routes[0];
 
-    let points = polyline.decode(root.routes[0].overview_polyline.points);
+    const startPoint = route.bounds.northeast;
+    const endPoint = route.bounds.southwest;
 
-    console.log(points);
+    let points = polyline.decode(route.overview_polyline.points);
 
     points = points.map(([a,b]) => {return {lat: a, lng: b}});
 
-    console.log(points);
-
     const centerPoint = {lat: (startPoint.lat+endPoint.lat)/2, lng: (startPoint.lng+endPoint.lng)/2};
 
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: centerPoint,
-        zoom: 7.5
-    });
+    map = new google.maps.Map(document.getElementById('map'));
+
+    const lala = new google.maps.LatLngBounds(route.bounds.southwest, route.bounds.northeast);
+    map.fitBounds(lala);
 
     var flightPath = new google.maps.Polyline({
         path: points,
