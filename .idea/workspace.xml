@@ -20,8 +20,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+                <state relative-caret-position="96">
+                  <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
                 </state>
               </provider>
             </entry>
@@ -79,8 +79,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/send.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="168">
-                  <caret line="7" column="41" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="41" />
+                <state relative-caret-position="216">
+                  <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
                 </state>
               </provider>
             </entry>
@@ -138,13 +138,13 @@
         <option value="$PROJECT_DIR$/vendor/about.html" />
         <option value="$PROJECT_DIR$/vendor/services.html" />
         <option value="$PROJECT_DIR$/vendor/contact.html" />
-        <option value="$PROJECT_DIR$/send.js" />
         <option value="$PROJECT_DIR$/services.html" />
         <option value="$PROJECT_DIR$/contact.html" />
         <option value="$PROJECT_DIR$/about.html" />
         <option value="$PROJECT_DIR$/vendor/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/vendor/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/send.js" />
       </list>
     </option>
   </component>
@@ -235,15 +235,15 @@
       <updated>1570829867388</updated>
       <workItem from="1570829869996" duration="1431000" />
       <workItem from="1570834685298" duration="13314000" />
-      <workItem from="1570873631335" duration="763000" />
+      <workItem from="1570873631335" duration="2476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15508000" />
+    <option name="totallyTimeSpent" value="17221000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="32" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13244048" />
@@ -260,7 +260,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32991454" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.15897436" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.21196581" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Quokka" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -334,15 +334,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        <state relative-caret-position="96">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/send.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="41" />
+        <state relative-caret-position="216">
+          <caret line="24" column="37" lean-forward="true" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
         </state>
       </provider>
     </entry>

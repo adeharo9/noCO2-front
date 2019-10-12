@@ -4,7 +4,7 @@ $(document).ready(function() {
         let origin = $('#origin').val();
         let destination = $('#destination').val();
         alert("Origen: " + origin + " Destination: " + destination);
-            let parameters = { origin: origin, destination: destination };
+            let parameters = { origin: origin, destination: destination, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             $.get( "http://104.248.40.235:8080/emissions/", parameters, function(data) {
                 alert(JSON.stringify(data));
                 $('#form_calc').remove();
