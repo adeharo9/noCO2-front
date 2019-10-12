@@ -19,29 +19,29 @@ const drawRoute = (root) => {
 
     const route = root.routes[0];
 
-    const startPoint = route.bounds.northeast;
-    const endPoint = route.bounds.southwest;
-
-    let points = polyline.decode(route.overview_polyline.points);
-
-    points = points.map(([a,b]) => {return {lat: a, lng: b}});
-
-    const centerPoint = {lat: (startPoint.lat+endPoint.lat)/2, lng: (startPoint.lng+endPoint.lng)/2};
-
     map = new google.maps.Map(document.getElementById('map'));
+    const bounds = new google.maps.LatLngBounds(route.bounds.southwest, route.bounds.northeast);
+    map.fitBounds(bounds);
 
-    const lala = new google.maps.LatLngBounds(route.bounds.southwest, route.bounds.northeast);
-    map.fitBounds(lala);
+    for (const leg of route.legs) {
+        for (const step of leg.steps) {
+            let points = polyline.decode(step.polyline.points);
 
-    var flightPath = new google.maps.Polyline({
-        path: points,
-        geodesic: true,
-        strokeColor: '#FF0000',
-        strokeOpacity: 1.0,
-        strokeWeight: 2
-    });
+            points = points.map(([a, b]) => {
+                return {lat: a, lng: b}
+            });
 
-    flightPath.setMap(map);
+            var flightPath = new google.maps.Polyline({
+                path: points,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            flightPath.setMap(map);
+        }
+    }
 };
 
 export { drawRoute };
