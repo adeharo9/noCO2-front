@@ -1,14 +1,11 @@
 const template = `
 <div class="statistics-box">
-    Total distance:
-    <div name="total-distance"></div> km
-    <br>
-    Total time:
-    <div name="total-time"></div> h
-    <br>
-    Total CO2 emissions:
-    <div name="total-co2-emissions"></div>g CO2
-    <br>
+    <b>Total distance:</b>
+    <div name="total-distance"></div>
+    <b>Total time:</b>
+    <div name="total-time"></div>
+    <b>Total CO2 emissions:</b>
+    <div name="total-co2-emissions"></div>
 </div>
 `;
 
@@ -29,9 +26,9 @@ const statistics = (json) =>
         totalDistance /= 1000;  /* km */
         totalTime /= 60;    /* min */
 
-        $div.find('div[name=total-distance]').text(totalDistance.toPrecision(5));
-        $div.find('div[name=total-time]').text(totalTime.toPrecision(5));
-        $div.find('div[name=total-co2-emissions]').text(route.emissions.co2.toPrecision(5));
+        $div.find('div[name=total-distance]').text(`${totalDistance.toPrecision(5)} km`);
+        $div.find('div[name=total-time]').text(`${totalTime.toPrecision(5)} min`);
+        $div.find('div[name=total-co2-emissions]').text(`${route.emissions.co2.toPrecision(5)} g CO2`);
         $('#statistics-container').append($div);
     }
 };
