@@ -1,9 +1,6 @@
 
 var map;
 
-window.initMap = function initMap() {
-};
-
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 function addMarker(location) {
@@ -16,10 +13,16 @@ function addMarker(location) {
     });
 }
 
+let globalRoot;
+let texInfoEmissions;
+
 const drawRoute = (root) => {
+    globalRoot = root;
     alert(JSON.stringify(root));
     $('#form_calc').hide();
     const $map = $('#map').show();
+
+    texInfoEmissions = new google.maps.InfoWindow();
 
     const route = root.routes[0];
 
@@ -66,24 +69,33 @@ const drawRoute = (root) => {
                 greenLevel = (255 - rateEmissions)*2;
             }
 
-            console.log(rateEmissions);
             redLevel = redLevel.toString(16).padStart(2, "0");
             greenLevel = greenLevel.toString(16).padStart(2, "0");
-            console.log(redLevel);
 
             var flightPath = new google.maps.Polyline({
                 path: points,
-                geodesic: true,
                 strokeColor: `#${redLevel}${greenLevel}00`,
                 strokeOpacity: 1.0,
-                strokeWeight: 2
+                strokeWeight: 5
             });
-
+            flightPath.emission = step.emissions.co2;
+            flightPath.addListener("mouseover", polyLineMouseOver);
+            flightPath.addListener("mouseout", polyLineMouseOut);
             flightPath.setMap(map);
         }
 
         addMarker(leg.end_location);
     }
 };
+
+function polyLineMouseOver(event) {
+    texInfoEmissions.setPosition(event.latLng);
+    texInfoEmissions.setContent(this.emission.toFixed(4) + "g CO2");
+    texInfoEmissions.open(map);
+}
+
+function polyLineMouseOut(event) {
+    texInfoEmissions.close();
+}
 
 export { drawRoute };
