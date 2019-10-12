@@ -7,7 +7,7 @@ function addMarker(location, labelIndex) {
     // from the array of alphabetical characters.
     new google.maps.Marker({
         position: location,
-        label: labels[labelIndex++ % labels.length],
+        label: labels[labelIndex % labels.length],
         map: map
     });
 }
@@ -78,6 +78,7 @@ const drawRoute = (root) => {
         }
 
         addMarker(route.legs[0].start_location, labelIndex);
+        ++labelIndex;
 
         for (const leg of route.legs) {
             for (const step of leg.steps) {
@@ -116,6 +117,7 @@ const drawRoute = (root) => {
             }
 
             addMarker(leg.end_location, labelIndex);
+            ++labelIndex;
         }
     }
 };
