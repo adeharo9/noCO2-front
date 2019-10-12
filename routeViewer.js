@@ -23,7 +23,38 @@ const drawRoute = (root) => {
     texInfoEmissions = new google.maps.InfoWindow();
 
     map = new google.maps.Map(document.getElementById('map'));
-    const bounds = new google.maps.LatLngBounds(root.routes[0].bounds.southwest, root.routes[0].bounds.northeast);
+
+    let bounding = {
+        northeast: {
+            lat: -99999999,
+            lng: -99999999
+        },
+        southwest: {
+            lat: 99999999,
+            lng: 99999999
+        }
+    };
+    for (const route of root.routes)
+    {
+        if (route.bounds.northeast.lat > bounding.northeast.lat)
+        {
+            bounding.northeast.lat = route.bounds.northeast.lat;
+        }
+        if (route.bounds.northeast.lng > bounding.northeast.lng)
+        {
+            bounding.northeast.lng = route.bounds.northeast.lng;
+        }
+        if (route.bounds.southwest.lat < bounding.southwest.lat)
+        {
+            bounding.southwest.lat = route.bounds.southwest.lat;
+        }
+        if (route.bounds.southwest.lng < bounding.southwest.lng)
+        {
+            bounding.southwest.lng = route.bounds.southwest.lng;
+        }
+    }
+
+    const bounds = new google.maps.LatLngBounds(bounding.southwest, bounding.northeast);
     map.fitBounds(bounds);
 
     for (const route of root.routes)
