@@ -40,23 +40,26 @@ $(document).ready(function() {
         // ******
 
         // TIME
+        let nothing = false;
         let departure = true;
-        if($('input:radio[name=time_radio]:checked').val() == "arrival"){
+        if($('input:radio[name=time_radio]:checked').val() == "nothing"){
+            nothing = true;
+        }else if($('input:radio[name=time_radio]:checked').val() == "arrival"){
             departure = false
         }
         let fechaMili = new Date($('#time_local').val()).getTime();
-        console.log(fechaMili/1000);
         // *****
         if(origin.length == 0 || destination.length == 0){
             alert("Some field/s is/are empty.");
         }else{
             let parameters;
-            if(departure){
+            if(departure && !nothing){
                 parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, departure_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
-            }else{
+            }else if(!departure && !nothing){
                 parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, arrival_time: fechaMili/1000, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
+            }else{
+                parameters = { origin: origin, destination: destination, mode: typeVehicle, waypoints: waypoints, alternatives: alternatives, key: "AIzaSyC3bQgaJnuDJpHWCDjQoJGHgDcUyPcVXCM" };
             }
-            console.log(parameters)
             $.get( "http://104.248.40.235:8080/emissions/", parameters, drawRoute);
         }
     });
@@ -68,7 +71,6 @@ $(document).ready(function() {
             $('#waypoint').after("<button style=\"color: white;margin-left:15px;background-color: #1b1e21\" class=\"btn btn-default\" id=\"remove_waypoint\">Remove waypoint</button>")
             $('#remove_waypoint').on('click', function (e) {
                 e.preventDefault();
-                console.log($('#waypoints').children().length);
                 $('#waypoints').children().last().remove();
                 if($('#waypoints').children().length == 0){
                     $('#remove_waypoint').remove();
