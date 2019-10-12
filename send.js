@@ -81,7 +81,7 @@ $(document).ready(function() {
         e.preventDefault();
         $('#waypoints').append("<input style='margin-top: 10px;margin-bottom: 10px' type='text' class='form-control' placeholder='Enter waypoint'>");
         if($('#waypoints').children().length > 0 && !$('#remove_waypoint').length){
-            $('#waypoint').after("<button style=\"color: white;margin-left:15px;background-color: #1b1e21\" class=\"btn btn-default\" id=\"remove_waypoint\">Remove waypoint</button>")
+            $('#waypoint').after("<button style=\"color: white;margin-left:15px;margin-bottom: 15px;background-color: #1b1e21\" class=\"btn btn-default\" id=\"remove_waypoint\">Remove waypoint</button>")
             $('#remove_waypoint').on('click', function (e) {
                 e.preventDefault();
                 $('#waypoints').children().last().remove();
