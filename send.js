@@ -1,4 +1,4 @@
-import {drawRoute} from "./routeViewer.js";
+import { drawRoute } from "./routeViewer.js";
 import { statistics } from "./statistics.js";
 
 $(document).ready(function() {

@@ -14,6 +14,7 @@ function addMarker(location, labelIndex) {
 
 let globalRoot;
 let texInfoEmissions;
+let polylines = [];
 
 const drawRoute = (root) => {
     globalRoot = root;
@@ -57,8 +58,11 @@ const drawRoute = (root) => {
     const bounds = new google.maps.LatLngBounds(bounding.southwest, bounding.northeast);
     map.fitBounds(bounds);
 
+    let i = 0;
+
     for (const route of root.routes)
     {
+        polylines.push([]);
         var labelIndex = 0;
 
         let minEmission = 99999999;
@@ -114,11 +118,13 @@ const drawRoute = (root) => {
                 flightPath.addListener("mouseover", polyLineMouseOver);
                 flightPath.addListener("mouseout", polyLineMouseOut);
                 flightPath.setMap(map);
+                polylines[i].push(flightPath);
             }
 
             addMarker(leg.end_location, labelIndex);
             ++labelIndex;
         }
+        ++i;
     }
 };
 
@@ -132,4 +138,4 @@ function polyLineMouseOut(event) {
     texInfoEmissions.close();
 }
 
-export { drawRoute };
+export { drawRoute, polylines };
