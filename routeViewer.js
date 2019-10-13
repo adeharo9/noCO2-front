@@ -21,8 +21,6 @@ const drawRoute = (root) => {
     $('#form_calc').hide();
     const $map = $('#map-container').show();
 
-    console.log(root)
-
     texInfoEmissions = new google.maps.InfoWindow();
 
     map = new google.maps.Map(document.getElementById('map'));
