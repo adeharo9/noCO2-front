@@ -43,7 +43,8 @@ const statistics = (json) =>
             for (let j = 0; j < json.routes.length; ++j)
             {
                 if (j === i) { continue; }
-
+                let arrayChildren = $('#statistics-container').children();
+                arrayChildren[j].style.opacity = 0.25;
                 for (const polyline of polylines[j])
                 {
                     polyline.setVisible(false);
@@ -58,7 +59,8 @@ const statistics = (json) =>
             for (let j = 0; j < json.routes.length; ++j)
             {
                 if (j === i) { continue; }
-
+                let arrayChildren = $('#statistics-container').children();
+                arrayChildren[j].style.opacity = 1;
                 for (const polyline of polylines[j])
                 {
                     polyline.setVisible(true);
