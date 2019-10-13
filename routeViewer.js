@@ -21,6 +21,8 @@ const drawRoute = (root) => {
     $('#form_calc').hide();
     const $map = $('#map-container').show();
 
+    console.log(root)
+
     texInfoEmissions = new google.maps.InfoWindow();
 
     map = new google.maps.Map(document.getElementById('map'));
@@ -114,6 +116,19 @@ const drawRoute = (root) => {
                     strokeOpacity: 1.0,
                     strokeWeight: 5
                 });
+                let transitDetails = step.transit_details;
+                if (transitDetails !== undefined) {
+                    let line = transitDetails.line;
+                    if (line !== undefined) {
+                        let vehicle = line.vehicle;
+                        if (vehicle !== undefined) {
+                            let icon = vehicle.icon;
+                            if (icon !== undefined) {
+                                flightPath.iconUrl = icon;
+                            }
+                        }
+                    }
+                }
                 flightPath.emission = step.emissions.co2;
                 flightPath.addListener("mouseover", polyLineMouseOver);
                 flightPath.addListener("mouseout", polyLineMouseOut);
@@ -129,8 +144,17 @@ const drawRoute = (root) => {
 };
 
 function polyLineMouseOver(event) {
+    if (this.iconUrl !== undefined) {
+        const $image = $("<img>").prop("src", this.iconUrl);
+        const $div = $("<div>");
+        $div.append($image);
+        $div.append(this.emission.toFixed(4) + "g CO2");
+        texInfoEmissions.setContent($div[0]);
+    }
+    else {
+        texInfoEmissions.setContent(this.emission.toFixed(4) + "g CO2");
+    }
     texInfoEmissions.setPosition(event.latLng);
-    texInfoEmissions.setContent(this.emission.toFixed(4) + "g CO2");
     texInfoEmissions.open(map);
 }
 
